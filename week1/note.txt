@@ -1,1 +1,79 @@
+eval "$(ssh-agent -s)"
+ssh-add ~/myssh
+Add the SSH public key to your account on GitHub.
+ssh -T git@github.com
 
+#Adding a Remote Repository
+      Using  HTTPS
+git remote add origin https://github.com/your-username/your-repo.git
+     Using SSH Instead of HTTPS
+git remote add origin git@github.com:your-username/your-repo.git
+The "origin" repository in the GitHub repository dashboard refers to the remote repository that you have cloned or added as a remote to your local Git repository. It’s the primary repository you push your changes to and pull updates from. On GitHub's website, the origin repository is simply the repository you are viewing or working with.
+
+Here’s how you can locate and manage your repository on GitHub:
+
+Finding Your Repository on GitHub:
+Log In to GitHub:
+
+Go to github.com and log in to your account.
+Navigate to Your Repositories:
+
+Click on your profile picture in the upper-right corner of the page.
+Select "Your repositories" from the dropdown menu.
+Select the Repository:
+
+Click on the repository name you are interested in. This is the repository that corresponds to the origin remote in your local Git configuration.
+Repository Dashboard Overview:
+Once you are in your repository, you will see several tabs and options:
+
+Code: This tab shows the main code base of your repository. You can browse files, folders, and branches.
+
+Issues: This is where you can track bugs and feature requests.
+
+Pull requests: This tab shows all the pull requests that have been opened in the repository.
+
+Actions: Here you can manage workflows and see the status of automated tasks.
+
+Projects: This tab allows you to manage project boards.
+
+Wiki: You can create and manage a wiki for your project.
+
+Security: This tab provides security advisories and alerts related to your repository.
+
+Insights: This section offers various analytics and reports about your repository’s activity.
+
+Managing Remotes Locally:
+To check the remotes associated with your local repository:
+
+Open your terminal.
+Navigate to your local repository:
+sh
+Copy code
+cd /path/to/your/local/repo
+Run:
+sh
+Copy code
+git remote -v
+You will see output similar to:
+
+perl
+Copy code
+origin  https://github.com/your-username/your-repo.git (fetch)
+origin  https://github.com/your-username/your-repo.git (push)
+This output shows the URL for the origin remote, which is the repository on GitHub you are working with.
+
+Adding or Changing Remotes:
+If you need to add a new remote or change the URL of the existing origin remote, you can do so using the following commands:
+
+Add a new remote:
+
+sh
+Copy code
+git remote add origin https://github.com/your-username/your-repo.git
+Change the URL of an existing remote:
+
+sh
+Copy code
+git remote set-url origin https://github.com/your-username/your-new-repo.git
+Conclusion:
+The origin repository in your GitHub dashboard is simply the repository you are viewing or working with on GitHub. Locally, you manage this through Git commands to interact with the remote repository. This setup allows you to push and pull code between your local machine and the repository hosted on GitHub.
