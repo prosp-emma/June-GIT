@@ -44,3 +44,5 @@ In your terminal, navigate to your repository and update the remote URL to inclu
 
      # check crede
      git config --global -e
+
+git merge ori/main --allow-unrelated-histories
