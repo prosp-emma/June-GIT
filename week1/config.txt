@@ -1,0 +1,69 @@
+CRLF stands for "Carriage Return Line Feed," which are special characters used to denote the end of a line of text in a file.
+  Different operating systems use different characters to represent the end of a line:
+
+Windows uses CRLF (\r\n).
+Unix/Linux uses LF (\n).
+
+Git provides several options to help manage line endings:
+
+Core Autocrlf:
+This setting automatically converts line endings to the appropriate style based on your operating system.
+To enable it, you can set the core.autocrlf configuration option:
+
+# On Windows:
+         git config --global core.autocrlf true
+# This converts LF to CRLF on checkout and CRLF to LF on commit.
+
+# On Unix/Linux/macOS:
+         git config --global core.autocrlf input
+# This converts CRLF to LF on commit but leaves LF unchanged on checkout.
+
+To explicitly set line endings, you can use the core.eol configuration option:
+
+       git config --global core.eol lf  # Use LF for line endings
+     git config --global core.eol crlf  # Use CRLF for line endings
+
+
+pen the Credential Manager:
+Press Win + R, type control.exe keymgr.dll, and press Enter.
+Or search for "Credential Manager" in the Windows Start Menu.
+Go to the "Windows Credentials" tab.
+Look for entries related to git or github.com.
+Remove these entries by clicking on them and selecting "Remove".
+
+  macOS:
+
+Open Keychain Access:
+You can find this in Applications > Utilities > Keychain Access, or use Spotlight Search.
+Search for entries related to git or github.com.
+Delete these entries.
+Linux:
+
+If you have used a credential helper like libsecret, you might need to clear stored credentials:
+sh
+Copy code
+printf "protocol=https\nhost=github.com\n" | git credential-cache erase
+2. Clear Credentials in VS Code Settings
+VS Code may also store Git credentials in its settings. To ensure these are cleared:
+
+Open VS Code.
+Go to File > Preferences > Settings (or use Ctrl + ,).
+In the search bar, type "Git".
+Look for settings related to authentication, like "Git: Credential Manager".
+Reset or remove any credentials or authentication settings.
+3. Clear the Git Credential Cache
+If you've used Git's credential cache, clear it with the following command:
+
+git credential-cache exit
+Or, if you've used the credential store:
+
+
+git credential-store --file ~/.git-credentials remove
+rm ~/.git-credentials
+4. Remove Git Configuration Entries
+Remove any credentials stored in your Git configuration:
+
+
+git config --global --unset credential.helper
+git config --system --unset credential.helper
+5. Restart VS Code
